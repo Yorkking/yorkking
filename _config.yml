@@ -154,7 +154,7 @@ sidebar:
   avatar: # 侧边栏显示的头像
     enable: true
     img:  # 头像的地址
-    info: <br>SYSU17级在读<br>计科<br>中国象棋爱好者<br># 头像背后的信息
+    info: <br>SYSU17级在读<br>计科<br>中国象棋爱好者 # 头像背后的信息
   description: ''
   social:
   - title: rss # rss
@@ -164,8 +164,8 @@ sidebar:
     class: 'fa fa-qq fa-fw'
   - title: shuitang # weixin
     class: 'fa fa-weixin fa-fw'
-  - title: wu.kan@foxmail.com # email
-    href: mailto:wu.kan@foxmail.com
+  - title: shuitang.wang@foxmail.com # email
+    href: mailto:shuitang.wang@foxmail.com
     class: 'fa fa-envelope fa-fw'
   - title: github # email
     href: //github.com/Yorkking

@@ -1,0 +1,184 @@
+---
+title: MIT 6.824 raft协议
+data: 2020-3-29 16:23:00
+tags:
+	- Go
+	- raft
+	- 分布式
+categories:
+	- 学习
+---
+
+
+
+# MIT 6.824 raft协议
+
+目前只写了 2A 部分的经验。
+
+疫情期间，在家闲着也是闲着，所以就想学点新知识吧，恰好对分布式系统感兴趣，就想学学这方面的知识。废话不多说，直接进入正题。
+
+MIT 6.824是一个分布式系统的课程，里面包含了几个和分布式系统相关的项目，其中第二个就是利用 go 实现 raft 协议。
+
+MIT 6.824 raft 项目链接：
+
+从我自身的经历出发，我想从以下几方面来谈谈这个项目应该怎么入门呢？
+
+先说我自己在入门前的基础：
+
+> 计科大三本科生
+>
+> 无 go 基础
+>
+> raft 协议只是了解
+
+这个实验大概花费了2周时间吧，每天2-3h，因为自己这方面基础实在不太行，主要是debug了蛮久的。以下是个人的一些经验。
+
+## 学习 go 的基本语法
+
+学习 go 是做这个实验的前提，go 语言的学习只需要掌握基本的语法即可，了解即可。比如 func select 和 go 的并发基础即可。
+
+重点熟悉：
+
+- select 语句
+- time 定时操作
+- go 的并发和通信
+
+这个实验一个比较核心的考虑如何实现心跳操作。主要思想就是利用 go 的 select 来实现超时机制，可以参考这篇[博客](https://www.cnblogs.com/yinzhengjie/p/7771645.html)。
+
+## 认识raft协议
+
+学习并了解raft协议是这个实验的核心。首先，是在6.824[官网的教程]( https://pdos.csail.mit.edu/6.824/labs/lab-raft.html)里面先阅读， 然后阅读这门课给[学生指导](https://thesquareplanet.com/blog/students-guide-to-raft/)。根据里面的指导，有一个非常形象的[**动画演示raft协议的网站**](http://thesecretlivesofdata.com/raft/)（强烈建议看看这个，对raft有一个初步的认识）。当然，**最重要**的是还需要阅读 [raft 论文](http://ramcloud.stanford.edu/raft.pdf)（一定要读！！），特别时论文 P4 的 Figure 2，可以说整个实验基本就是对着 Figure 2 实现的。然后看完之后，再去看[学生指导](https://thesquareplanet.com/blog/students-guide-to-raft/)。
+
+![raft](MIT%206.824%20raft%E9%A1%B9%E7%9B%AE.assets/clip_image001-1585318879928.png)
+
+### 1. raft协议是什么？
+
+raft协议是一个基于 Paxos 协议改进的一个分布式共识容错协议，主要目的是改善 Paxos 协议非常难以理解的缺点。
+
+一个 raft 系统包含许多节点（一般>=3个），这些节点可以用来存储一些数据，并且要保证每个节点存储的数据副本之间保持一致。
+
+raft 协议通过一些机制来保证节点之间副本的一致性，即使是在网络不可靠的情况下，各类节点可能存在通信不可靠失效的情况下（当然不包含拜占庭失效），都要求系统的数据副本是一致的。
+
+这个协议实现一致性，主要就是通过一个leader角色来维护整个系统。
+
+> 目标：维护系统的副本一致性，即使是出现节点的宕机等非拜占庭失效情景
+>
+> 方式：
+>
+> - 每个节点维护一个日志log, log存储的一系列指令（command），以及term（自己的任期，相对于逻辑时钟，是用来比较系统中那个节点的更新的关键参数）；
+> - 系统中有且只有一个leader;
+> - leader通过某种方式使得其他节点的log和自己一致；
+> - 当系统中出现leader节点宕机后，需要通过选举机制来产生新的leader;
+
+### 2. raft 系统的节点角色
+
+raft 系统中，节点可能扮演的角色一共有三种：follower, candidate, leader, 各角色的执行的主要功能如下：
+
+- follower: 追随者，它自身设置一个超时定时器（timer) , 时刻接收来自 leader 的心跳检测（heartbeat）。在接收到有效的 heartbeat 后，它将重置自己的超时定时器；否则，超出timer的时间仍未接收到有效的 heartbeat, 那么它将转变成 candidate 角色。
+- candidate: 候选者，希望自己可以变成leader。当一个节点成为candidate时，它也会设置一个 超时定时器 timer , 然后发起一轮选举：广播自己的想成为leader的资格给其他节点，然后如果收到大多数的赞同票（每个节点只能投一票），那么它将成为leader。
+- leader: 领导者，顾名思义，用来领导整个系统，主要功能就是来维护各个节点的数据副本和自身的一致。它将定期的广播 heartbeat 心跳检测信息给其他节点，一方面是告诉其他节点这个系统的leader是它，另一方面是用来传达存储的数据信息，从而维护各节点之间数据的一致性。
+
+节点的角色之间可以进行转换，转换的规则后面细讲。
+
+### 3. 重要阶段
+
+#### 心跳检测阶段 or 日志备份阶段
+
+![image-20200329161724467](MIT%206.824%20raft%E9%A1%B9%E7%9B%AE.assets/image-20200329161724467.png)
+
+心跳检测阶段是由leader**定期发起**的一个阶段。leader会**广播消息**给raft系统中的其他节点，告诉它们自己是这个系统的leader。同时，这个阶段也可能是leader把自己的**日志**发送给其他节点，其他节点来复制leader的日志，从而维持所有节点的日志的一致性。（具体是实现见论文 or 下面实验实现部分）
+
+#### 选举阶段
+
+![image-20200329161604862](MIT%206.824%20raft%E9%A1%B9%E7%9B%AE.assets/image-20200329161604862.png)
+
+follower节点会维持一个超时定时器，定时的时间间隔一般为150ms-300ms，如果在超时之前都没有收到来自leader的心跳检测，那么它会变成candidate，从而发起一轮选举。
+
+选举的过程：广播自己的**消息**给其他节点，如果其他节点**认可它的资格**，则会对它进行**投票**；当自己收到的票数超过半数时，那么它将成为leader。（具体实现，见论文 or 下面的实现）
+
+raft协议大概就是如此，三个角色和两个重要阶段。
+
+
+
+## 6.824  raft 项目
+
+[项目源码](https://github.com/Yorkking/Raft)
+
+### 项目的基本框架
+
+具体的话，直接看课程的源码里面 raft.go 里面的注释；一定要仔细看注释，了解清楚它的框架。
+
+### 具体实现的一些细节
+
+其实，很多实验细节在MIT 6.824官网和它给的学生指导界面都说了，只是开始做实验时，会忽略蛮多东西吧。
+
+### 2A 部分
+
+这部分，raft只要需要维护的信息为（即struct raft结构体里面的变量需要）
+
+```go
+state         int32  // 自己的角色状态: follower,candidate,leader
+currentTerm   int32  // 自己的term
+voteFor       int    // 投票的对象，-1表示未投
+electionTimer *time.Timer  //定时器
+voteCh        chan struct{} //投票成功的信道，告诉自己重置定时器
+appendCh      chan struct{} //收到心跳检测的信道，告诉自己重置定时器
+voteAcquried int			//收到的票数
+```
+
+这个部分，不需要考虑replication副本复制，只需要实现 raft 协议基本的两个过程：选举过程和心跳检测过程。
+
+**选举过程**：由candidate发起，自己的currentTerm += 1，重置自己的超时定时器，然后向其他节点广播RequestVoteRPC信息（实验中是调用 sendRequestVote)，传入参数如下说明。candidate 自身维护一个voteAcquried 变量用于记录其他节点投赞成票的数目，初始时设为1（自身投的赞成票）。
+
+candidate收到其他节点的返回信息时：如果是true, 那么自身的 voteAcquried += 1；如果收到的term > currentTerm, 则马上设置currentTerm = term, 并且转变为follower角色，并返回。如果收到的voteAcquried超过半数，则变换角色为leader。
+
+重点是实现 RequestVoteRPC 函数
+
+![image-20200327222404000](MIT%206.824%20raft%E9%A1%B9%E7%9B%AE.assets/image-20200327222404000.png)
+
+这个函数是由candidate调用的，所以执行者是其他节点。这里其实传入的参数不需要那么多，只需要 term 和 candidateId 两个参数，返回参数是 term 和 voteGranded. 收到RequestVote的节点执行的逻辑如下：
+
+- 如果 term < currentTerm, 直接拒绝，并把返回term := currentTerm，返回false;
+- 如果 term > currentTerm, 修改自己的currentTerm = term, 然后变为follower状态，之后投票投赞成票，返回true;
+- 如果 term = currentTerm，如果未投票，则投赞成票，并返回true; 否则返回fasle;
+
+**心跳检测过程**：由leader发起, 广播心跳消息给其他节点；
+
+
+
+![image-20200327225742874](MIT%206.824%20raft%E9%A1%B9%E7%9B%AE.assets/image-20200327225742874.png)
+
+2A部分实际上述函数的传入参数只需要 term 和 leaderId ; leader调用AppendEntry，传入参数为term, leaderId; 其他节点收到AppendEntry, 那么如果
+
+- 自己的currentTerm > term, 并返回currentTerm, 并告诉自己这是一个无效的心跳检测，不需要重置定时器；
+- 如果 currentTerm == term，返回currentTerm, 变换自己角色为follower, 并告诉自己这是有效的心跳检测，需要重置定时器；
+- 如果 currentTerm < term, 并返回currentTerm, 修改自己的currentTerm = term, 变换自己的角色为follower, 并告诉自己这是一个有效的心跳检测，需要重置定时器；
+
+leader收到来自其他节点的回复reply:
+
+- reply.term > currentTerm, 设置自己的currentTerm = reply.term，并且变换自己角色为follower
+- 否则，continue;
+
+### 注意事项
+
+- 每次重置的timer定时器都是随机的；
+- candiate进入选举过程开始时，currentTerm += 1;
+- 如果一个candidate在投票期间遇到了有效的 heartbeat , 那么它将转回 follower;
+- 任何一个节点收到的一个term如果比自己的 currentTerm 大的话，那么自己需要更改自己的currentTerm = term，并马上转变为 follower，清空自己的投票记录。
+- 每个节点投一票。如果已经投了票，但收到的term > 自己的 currentTerm时，要把票改投给发送消息过来的这个节点；
+- 向RPC函数传递的参数结构体的各个元素的变量名必须大写开头！
+
+### 2B 部分
+
+这部分先挖个坑，之后再补完。
+
+这部分要求实现 replication 副本复制过程，和带有限制的 election 过程。
+
+## 参考
+
+- raft论文：http://ramcloud.stanford.edu/raft.pdf
+-  MIT 6.824课程主页：https://pdos.csail.mit.edu/6.824/labs/lab-raft.html
+-  Student guide: https://thesquareplanet.com/blog/students-guide-to-raft/
+-  raft一个可视化理解：http://thesecretlivesofdata.com/raft/
+- go语言学习菜鸟教程：http://www.runoob.com/go/go-tutorial.html
+- go实现超时机制：https://www.cnblogs.com/yinzhengjie/p/7771645.html。

@@ -1,233 +1,97 @@
----
-layout: page
-title: 关于
-permalink: /about
----
-## 开始
+# 星合の空
 
-1. Fork [wu-kan/wu-kan.github.io](https://github.com/wu-kan/wu-kan.github.io)到你的仓库，并在设置里开启gh-pages
-2. 修改_config.yml为你自己的信息
-3. 删除_post/下的博文和public/image/文件夹下的图片，开始写你自己的文章
+欢迎访问我的个人主页！下面向你介绍一下我自己吧~
 
-详细配置可以参见[这篇博文](https://wu-kan.github.io/posts/博客搭建/基于Jekyll搭建个人博客)
+<!-- slide -->
 
-## 声明
+## 我的一些联系方式
 
-除特别声明或转载外，所有博文采用[署名-相同方式共享 4.0 国际](https://creativecommons.org/licenses/by-sa/4.0/deed.zh)协议进行许可。
+- Address: **Sun Yat-sen University - 132 Waihuan East Rd. - Guangzhou, China**
+- Phone: **+86 18756280097**
+- Site: **<https://wu-kan.cn>**
 
-博客基于[MIT License](https://github.com/wu-kan/wu-kan.github.io/blob/master/LICENSE)开源于[GitHub](https://github.com/wu-kan/wu-kan.github.io)。
+<!-- slide vertical=true -->
 
-## 致谢
+- E-mail:
+  - **[i@wu-kan.cn](mailto:i@wu-kan.cn)**
+  - **[wukan3@mail2.sysu.edu.cn](mailto:wukan3@mail2.sysu.edu.cn)**
+- WeChat: **Wu-\_-Kan**
+- QQ: **942759535**
 
-托管于[Github Pages](https://pages.github.com/)，感谢。
+<!-- slide -->
 
-由[jekyll/jekyll](https://github.com/jekyll/jekyll)驱动，感谢。
+## 我的一些教育情况
 
-基于[poole/lanyon](https://github.com/poole/lanyon)主题进行修改，感谢。
+<!-- slide vertical=true -->
 
-使用了[jsdelivr](https://www.jsdelivr.com/)提供的CDN加速服务，感谢。
+School of Data and Computer Science, Sun Yat-sen University, Guangzhou, Sept. 2017 - Jul. 2021(expected)
 
-留言和阅读量系统基于[Valine](https://valine.js.org/)和[LeanCloud](https://leancloud.cn/)，感谢。
+- Bachelor of Computer Science (Supercomputer Class)
+  - Principle of Supercomputer
+  - Parallel and Distributed Computing
+  - High Performance Computing
 
-使用了[不蒜子](http://busuanzi.ibruce.info/)页面统计，感谢。
+<!-- slide -->
 
-博文目录插件在[ghiculescu/jekyll-table-of-contents](https://github.com/ghiculescu/jekyll-table-of-contents)基础上修改，感谢。
+## 我的一些项目成果
 
-博客搜索插件使用了[christian-fei/Simple-Jekyll-Search](https://github.com/christian-fei/Simple-Jekyll-Search)，感谢。
+<!-- slide vertical=true -->
 
-代码高亮及插件使用了[PrismJS](https://prismjs.com/)，感谢。
+- [jekyll-theme-WuK](https://jekyll-theme-WuK.wu-kan.cn/)
+  - 我的个人主页使用的主题样式，也欢迎你用于[搭建自己的页面](https://jekyll-theme-WuK.wu-kan.cn/)~[![Star](https://img.shields.io/github/stars/wu-kan/wu-kan.github.io.svg)](https://github.com/wu-kan/wu-kan.github.io)[![Fork](https://img.shields.io/github/forks/wu-kan/wu-kan.github.io.svg)](https://github.com/wu-kan/wu-kan.github.io/fork)
 
-Live2D基于[stevenjoezhang/live2d-widget](https://github.com/stevenjoezhang/live2d-widget)，感谢。
+<!-- slide -->
 
-使用了[leopardpan/leopardpan.github.io](https://github.com/leopardpan/leopardpan.github.io)的头像翻转效果，感谢。
+## 我的一些成就
 
-## Feature/Todo
+<!-- slide vertical=true -->
 
-从[这个页面](https://magical-girl.site/)得到的灵感，目标是博客上除了文章和作为导航的Live2D之外尽量不出现其他的模块。
+- **Top 0.05% in 11395**, [The 18th CCF Certified Software Professional](/_posts/2019-12-16-%E7%AC%AC%E5%8D%81%E5%85%AB%E6%AC%A1CCF%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BD%AF%E4%BB%B6%E8%83%BD%E5%8A%9B%E8%AE%A4%E8%AF%81/), Dec. 2019
+- **Silver Medal**, [ICPC Asia Regional Contest Xuzhou Site](/_posts/2019-11-04-%E5%86%8D%E8%A7%81-%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/), Nov. 2019
+- **Second Scholarship**, Oct. 2019
+- **First Prize**, China Collegiate Programming Contest, Guangdong Division, May 2019
 
-- [x] 完成博客文章标签页
-- [ ] 完成博客文章分类页（分类暂时和标签没区别）
-- [ ] 重写博客首页，做一个有意思的封面，不再显示文章
-- [x] 加入评论系统，暂时考虑用valine+leancloud实现
-  - [x] 基于valine的阅读量统计
-- [x] 加入不蒜子统计
-- [x] <span class="fa fa-font-awesome"></span> Font Awesome
-- [x] 全站搜索
-- [x] 移植[原博客的ribbon动态背景](https://github.com/theme-next/theme-next-canvas-ribbon)
-- [x] 调整代码块风格，并加上代码选中按钮
-- [x] 加入可以自动展开、标号的目录
-  - [ ] 自动展开
-- [x] mermaid
-  - [x] Markdown代码扩展
-- [x] $\KaTeX$
-- [x] Live2D
-  - [x] 导航
-  - [x] 一言
-  - [ ] 找个人工智障对话的api接入现在的Live2D对话，当前是显示几个已有的句子或一言
-  - [ ] 删改掉原来的的骚话-_-
-  - [ ] 加上切换Live2D显示/关闭的按钮
-  - [ ] 使用自己搭建的Live2D后端API
-    - [ ] 收集一些Live2D Model
+<!-- slide vertical=true -->
 
-## 初心
+- **Third Scholarship**, Oct. 2018
+- **First Prize**, China Collegiate Programming Contest, Guangdong Division, May 2018
 
-我曾做什么？
+<!-- slide -->
 
-我正做什么？
+## 我的一些技能
 
-我想做什么？
+<!-- slide vertical=true -->
 
-我该做什么？
+- **C/C++**, Familiar
+  - **OpenMP**, Familiar
+  - **MPI**, Familiar&Learning
+  - **CUDA**, Learning
+- **Python**, Familiar
 
-> 章北海感到父亲的灵魂从冥冥中降落到飞船上，与他融为一体，他按动了操作界面上那个最后的按钮，心中默念出那个他用尽一生的努力所追求的指令：
-> > “‘自然选择’，前进四！”
+<!-- slide vertical=true -->
 
-## 历程
+- **Markdown**, Familiar
+- **LaTex**, Familiar
+- **Linux**, Familiar&Learning
+- **Git**, Familiar
+- **VSCode**, Familiar
 
-### 正在进行 v2.3.0
+<!-- slide -->
 
-所有插件JSLoader化，增加移植性和访问速度
+## 我的一些领导力
 
-### 2019-07-06 v2.2.1
+TBD
 
-- prismjs使用unpkg.com加速
-- 删去layout中的404页（因为只需要引入js脚本）
+<!-- slide -->
 
-### 2019-06-28 v2.2.0
+## 我的一些文字
 
-- 博客结构微调
-- 将大部分博客用到的jscdn换成unpkg.com，感谢其提供的加速服务~
-- 留言板加入友链
+- [基于 Jekyll 搭建个人博客](/_posts/2019-01-18-%E5%9F%BA%E4%BA%8EJekyll%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/)
+- [我的算法竞赛模板](/_posts/2019-02-04-%E6%88%91%E7%9A%84%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E6%A8%A1%E6%9D%BF/)
+- [这一年的一点感想](/_posts/2019-07-18-%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E4%B8%80%E7%82%B9%E6%84%9F%E6%83%B3/)
 
-### 2019-05-03 v2.1.4
+<!-- slide vertical=true -->
 
-- valine更新
-  - 现在支持记录访问者IP
-  - 每次重新拉取评论者头像
-
-### 2019-04-29 v2.1.3
-
-- 页面样式微调，将masthead调矮，将标题字号改小
-
-### 2019-03-20 v2.1.2
-
-- 修复sidebar展开时回到顶部的问题
-
-### 2019-03-18 v2.1.1
-
-- 一些界面上的小调整
-
-### 2019-03-01 v2.1.0
-
-- 调整某些插件
-- layout新增document页，一个只开启$\KaTeX$而不引入任何其他样式的页面，主要是方便自己生成可打印的ICPC模板和一些课程报告
-- layout新增404页，可选择开启腾讯公益
-- mermaid支持markdown扩展了
-
-### 2019-02-24 v2.0.1
-
-- sidebar的触发按钮样式换成了bars，原来的样式更像是菜单
-- 一点页面上的小调整
-
-### 2019-02-23 v2.0.0
-
-- 重构完成
-- 正式开源
-
-### 2019-02-19
-
-- 模块化·初步
-- 博客搜索实现
-
-### 2019-02-01
-
-- [署名-相同方式共享 4.0 国际](https://creativecommons.org/licenses/by-sa/4.0/deed.zh)。
-- 社会主义核心价值观点击特效，感谢[dujin](https://www.dujin.org/9088.html)。
-- 打赏。
-
-### 2019-01-31
-
-- mathjax换katex
-- post访问量统计
-
-### 2019-01-24
-
-- 代码高亮
-- 选中代码按钮
-- 代码语言按钮
-
-### 2019-01-23
-
-加入文章目录到SideBar
-
-### 2019-01-22
-
-- 加入Ribbon动态背景
-
-### 2019-01-21
-
-- 加入valine评论系统，留言页实现
-
-### 2019-01-20
-
-- 加入归档页
-
-### 2019-01-19
-
-- 加入标签页
-
-### 2019-01-18
-
-- 开始用Jekyll重构整个博客
-
-折腾吧，折腾是才最好玩的。
-
-### 2019-01-13
-
-- 更换Next.Muse主题模板
-- 少量修改页面自定义样式布局，主要是sidebar
-- 将网易云音乐iframe移动到description，感觉挺有意思的
-
-### 2019-01-12
-
-- 将NexT版本更新至v6.7.0
-
-### 2018-12-23
-
-- 页面字体修改
-- 网易云音乐iframe加入SideBar
-
-### 2018-12-16
-
-- 引入mermaid支持
-- 修复部分Latex渲染的Bug
-
-### 2018-11-24
-
-- 将NexT版本更新至v6.5.0
-- 用Valine更换失效的Gitment评论系统
-- 加入Leancloud和busuanzi页面统计
-
-### 2018-11-20
-
-- 谷歌，百度搜索页面提交
-
-### 2018-11-18
-
-- 全局透明化
-- 动态背景
-- 页面加载动画
-- Latex支持
-
-### 2018-11-16
-
-- 主题由默认的Landspace换至NexT v5.1.4
-- 使用Next.Pisces主题模板
-- 开始对网页进行自定义样式布局
-- 尝试加入Gitment，但初始化总是不成功
-
-### 2018-11-15
-
-- 在Github上成功部署博客
-- 成功迁移[原CSDN博客](https://blog.csdn.net/w_weilan)上的所有文章
-- live2d
+- [再见，算法竞赛！](/_posts/2019-11-04-%E5%86%8D%E8%A7%81-%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/)
+- [Markdown 写作心得](/_posts/2020-01-18-Markdown%E5%86%99%E4%BD%9C%E5%BF%83%E5%BE%97/)
+- [今日此时所想之事](http://wu-kan.cn/_posts/2020-01-24-%E4%BB%8A%E6%97%A5%E6%AD%A4%E6%97%B6%E6%89%80%E6%83%B3%E4%B9%8B%E4%BA%8B/)

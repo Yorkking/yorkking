@@ -58,7 +58,7 @@ head: # 删改前确定知道自己在做什么
     value: RSS
   - key: type
     value: application/rss+xml
-- tag: link # 网站大图标，我偷懒直接用gravatar了，也可以存在/public里面
+- tag: link # 网站大图标，我偷懒直接用了，也可以存在/public里面
   var:
   - key: rel
     value: apple-touch-icon-precomposed
@@ -170,11 +170,11 @@ sidebar:
   - title: github # email
     href: //github.com/Yorkking
     class: 'fa fa-github fa-fw'
-  - title: WuK # codeforces
-    href: //codeforces.com/profile/WuK
+  - title: shuitang # codeforces
+    href: //codeforces.com/profile/shuitang
     class: 'fa fa-bar-chart fa-fw'
   - title: shuitang # vjudge
-    href: //vjudge.net/user/WuK
+    href: //vjudge.net/user/shuitang
     class: 'fa fa-smile-o fa-fw'
   nav:
   - title: '<span class="fa fa-home fa-fw"></span>&nbsp;首页'
@@ -215,7 +215,7 @@ busuanzi:
 
 run-time:
   enable: true
-  start-time: '10/04/2017 11:03:56' # 这是我第一篇CSDN博客的时间
+  start-time: '05/15/2018 11:03:56' # 这是我第一篇CSDN博客的时间
   alert: 努力运行
   day: 天
   hour: 时

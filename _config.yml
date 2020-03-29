@@ -75,7 +75,7 @@ head: # 删改前确定知道自己在做什么
   - key: rel
     value: stylesheet
   - key: href
-    value: //cdn.jsdelivr.net/gh/wu-kan/wu-kan.github.io/public/css/poole.css # 用cdn加速会出问题，暂时不知道为什么
+    value: //cdn.jsdelivr.net/gh/Yorkking/yorkking.github.io/public/css/poole.css # 用cdn加速会出问题，暂时不知道为什么
 - tag: link
   var:
   - key: rel
@@ -87,13 +87,13 @@ head: # 删改前确定知道自己在做什么
   - key: rel
     value: stylesheet
   - key: href
-    value: //cdn.jsdelivr.net/gh/wu-kan/wu-kan.github.io/public/css/lanyon.css
+    value: //cdn.jsdelivr.net/gh/Yorkking/yorkking.github.io/public/css/lanyon.css
 - tag: link
   var:
   - key: rel
     value: stylesheet
   - key: href
-    value: //cdn.jsdelivr.net/gh/wu-kan/wu-kan.github.io/public/css/wu-kan.css
+    value: //cdn.jsdelivr.net/gh/Yorkking/yorkking.github.io/public/css/yorkking.css
 - tag: link
   var:
   - key: rel
@@ -110,7 +110,7 @@ script: # 需要在正文后调用的脚本
 - src: //cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js # jQuery
 - src: //cdn.jsdelivr.net/npm/ribbon.js/dist/ribbon.min.js # 彩带背景
 - src: //cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.js # live2d
-- src: //cdn.jsdelivr.net/gh/wu-kan/wu-kan.github.io/public/js/baidu_push.js # 百度推送
+- src: //cdn.jsdelivr.net/gh/Yorkking/yorkking.github.io/public/js/baidu_push.js # 百度推送
 - src: //cdn.jsdelivr.net/npm/prismjs/components/prism-core.min.js
 - src: //cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js
 - src: //cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js
@@ -224,7 +224,7 @@ run-time:
 
 copyright:
   enable: true
-  text: '已开源于<a href="//github.com/wu-kan/wu-kan.github.io">GitHub</a><br>'
+  text: '已开源于<a href="//github.com/Yorkking/yorkking.github.io">GitHub</a><br>'
 
 post:
   meta:

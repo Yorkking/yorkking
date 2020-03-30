@@ -81,7 +81,7 @@ jekyll-theme-WuK: # 我的主题的自定义样式都在这个命名空间
           href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"
         />
       - | # 引入live2d看板娘！不需要可以把这一项都删掉
-      =begin
+      <!--
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/Dreamer-Paul/Pio@2.4/static/pio.min.css"
@@ -149,7 +149,7 @@ jekyll-theme-WuK: # 我的主题的自定义样式都在这个命名空间
               });
             }'
         ></script>
-        =end
+        -->
       - | # 百度爬虫推送，http站点使用 http://push.zhanzhang.baidu.com/push.js
         <script
           src='https://zz.bdstatic.com/linksubmit/push.js'

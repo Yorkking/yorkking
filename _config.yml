@@ -96,11 +96,12 @@ jekyll-theme-WuK: # 我的主题的自定义样式都在这个命名空间
             background-position: center top;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            background-image: url(https://Mizuno-Ai.wu-kan.cn/pixiv/74559485_p1.webp);
+            
+            background-image: url(/assets/image/three_body.jpg);
           }
           @media (min-aspect-ratio: 2400/1850) {
             .wrap {
-              background-image: url(https://Mizuno-Ai.wu-kan.cn/pixiv/71932901_p0.webp);
+              background-image: url(/assets/image/three_body.jpg);
             }
           }
         </style>

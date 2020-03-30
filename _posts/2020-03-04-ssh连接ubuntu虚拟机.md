@@ -1,10 +1,7 @@
 ---
 title: ssh连接Ubuntu虚拟机
-data: 2020-3-4 19:20:21
 tags:
-	- linux
-categories:
-	- linux
+	- Linux
 ---
 
 # ssh连接Ubuntu虚拟机
@@ -34,7 +31,7 @@ sudo ps -e |grep ssh
 
 如果出现了类似这样的信息，就说明启动ssh服务成功了。
 
-![image-20200304192944821](ssh%E8%BF%9E%E6%8E%A5ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA.assets/image-20200304192944821.png)
+![image-20200304192944821](/assets/image/image-20200304192944821.png)
 
 如果没有，输入：
 
@@ -54,11 +51,11 @@ linux下输入ifconfig可以获得虚拟机的ip地址；
 
 比如windows下：192.168.2.109是虚拟机的ip地址；
 
-![image-20200304193437523](ssh%E8%BF%9E%E6%8E%A5ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA.assets/image-20200304193437523.png)
+![image-20200304193437523](/assets/image/image-20200304193437523.png)
 
 linux下：后面为windows主机的ip地址；
 
-![image-20200304193613557](ssh%E8%BF%9E%E6%8E%A5ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA.assets/image-20200304193613557.png)
+![image-20200304193613557](/assets/image/image-20200304193613557.png)
 
 在这里可能会遇到windows可以ping通linux，而linux却ping不通windows的情况。
 
@@ -68,13 +65,13 @@ linux下：后面为windows主机的ip地址；
 
 这里需要设置成桥接模式
 
-![image-20200304194346968](ssh%E8%BF%9E%E6%8E%A5ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA.assets/image-20200304194346968.png)
+![image-20200304194346968](/assets/image/image-20200304194346968.png)
 
 ### Windows防火墙的设置
 
 参考这一篇[博客](https://blog.csdn.net/qq_26822029/article/details/80428138)，把防火墙设置一下：找到文件和打印机共享
 
-![image-20200304194657021](ssh%E8%BF%9E%E6%8E%A5ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA.assets/image-20200304194657021.png)
+![image-20200304194657021](/assets/image/image-20200304194657021.png)
 
 ## 三、Windows下使用ssh命令连接虚拟机
 
@@ -84,7 +81,7 @@ linux下：后面为windows主机的ip地址；
 ssh -p 22 your_ubuntu_name@ip
 ```
 
-![image-20200304195238088](ssh%E8%BF%9E%E6%8E%A5ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA.assets/image-20200304195238088.png)
+![image-20200304195238088](/assets/image/image-20200304195238088.png)
 
 至此，大工告成。
 

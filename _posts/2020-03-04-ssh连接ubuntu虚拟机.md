@@ -1,7 +1,7 @@
 ---
 title: ssh连接Ubuntu虚拟机
 tags:
-	- Linux
+ - Linux
 ---
 
 # ssh连接Ubuntu虚拟机

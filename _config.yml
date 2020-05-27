@@ -58,23 +58,13 @@ jekyll-theme-WuK: # 我的主题的自定义样式都在这个命名空间
       - | # 来自lanyon的页面样式，不要改
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/combine/gh/poole/lanyon@ac85a3115c094b3e6cb92cc41771e98b443f6c5d/public/css/poole.min.css,gh/poole/lanyon@ac85a3115c094b3e6cb92cc41771e98b443f6c5d/public/css/lanyon.min.css"
+          href="https://cdn.jsdelivr.net/combine/gh/poole/lanyon@v1.1.0/public/css/poole.min.css,gh/poole/lanyon@v1.1.0/public/css/lanyon.min.css"
         />
-      - | #对于lanyon侧边栏按钮的一些补丁，Hide the sidebar checkbox that we toggle with `.sidebar-toggle`；建议不要改
-        <style>
-          .sidebar-checkbox {
-            display: none;
-          }
-          .sidebar-toggle {
-            position: fixed;
-          }
-          .sidebar-toggle:before,
-          .sidebar-toggle:active:before,
-          #sidebar-checkbox:focus~.sidebar-toggle:before,
-          #sidebar-checkbox:checked~.sidebar-toggle:before {
-            background-image: none;
-          }
-        </style>
+      - | # 引入fontawesome图标样式
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"
+        />
       - | # 引入fontawesome图标样式
         <link
           rel="stylesheet"
@@ -150,9 +140,19 @@ jekyll-theme-WuK: # 我的主题的自定义样式都在这个命名空间
         ></script>      
       
       - | # 百度爬虫推送，http站点使用 http://push.zhanzhang.baidu.com/push.js
-        <script
+       <script
           src='https://zz.bdstatic.com/linksubmit/push.js'
-          defer="defer"
+          async="async"
+        ></script>
+        - | #<!-- Global site tag (gtag.js) - Google Analytics -->
+        <script
+          async="async"
+          src="https://www.googletagmanager.com/gtag/js?id=UA-163543967-1"
+          onload="
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-163543967-1');"
         ></script>
       - | # 网站背景图片，分竖屏、宽屏；改链接即可，不想用可以把这一项全删掉；要换壁纸图片的话可把url内的部分换成你自己的，比如你放在/assets/image/background.jpg，那就改成url(/assets/image/background.jpg)
         <style>
@@ -291,6 +291,15 @@ jekyll-theme-WuK: # 我的主题的自定义样式都在这个命名空间
                 fuzzy: true
               })'
           ></script>
+      jekyll-toc: # 侧边栏的目录插件，https://github.com/allejo/jekyll-toc
+        enable: true
+        prepend: | # 目录长度超过半屏时自动折叠
+          <style>
+            #toc {
+              overflow: auto auto;
+              max-height: 50vh;
+            }
+          </style>
       append_to_sidebar:
         - | # 目录插件，如果看不懂就不改
           <style>

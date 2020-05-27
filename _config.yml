@@ -547,7 +547,7 @@ jekyll-theme-WuK: # 我的主题的自定义样式都在这个命名空间
   # 打赏页，需要配置！
  
  
-  home: # 用于生成ppt的模板，看不懂的话可以不用配置
+home: # 用于生成ppt的模板，看不懂的话可以不用配置
     append_to_section_tag:
       - key: data-markdown
       - key: data-separator # 水平展示页分隔符

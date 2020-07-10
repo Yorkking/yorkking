@@ -19,7 +19,7 @@ _site
 # OS or Editor folders
 .vscode
 .DS_Store
-._*
+#._*
 Thumbs.db
 .cache
 .project

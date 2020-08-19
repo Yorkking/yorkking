@@ -26,7 +26,7 @@ Constraints:
 
 ## 解法
 
-这道题是用二分的方法来解决。因为此题是求一个最大的间隔，可以使用二分的方法来求解。首先是确定上下界：毫无疑问，下界为1。那么上界呢？假设坐标 position 从小到大排序，最小的坐标为 minP, 最大坐标为 maxP，m 个球的情况下，那么最大距离必然小于等于$(maxP-minP)/(m-1)$。所以上下界是确定了。那么如果给定了一个间距 x，怎样能判断该 x 是否满足条件呢？这其实可以直接采用贪心的思想，直接遍历排序后的postion，记录距离大于 x 的个数，如果大于等于 m，那么这个 x 必然是可以的。
+这道题是用二分的方法来解决。因为此题是求一个最大的间隔，可以使用二分的方法来求解。首先是确定上下界：毫无疑问，下界为1。那么上界呢？假设坐标 position 从小到大排序，最小的坐标为 minP, 最大坐标为 maxP，m 个球的情况下，那么最大距离必然小于等于$(maxP-minP)/(m-1)$。所以上下界是确定了。那么如果给定了一个间距 x，怎样能判断该 x 是否满足条件呢？这其实可以直接采用贪心的思想，直接遍历排序后的 postion，记录距离大于 x 的个数，如果大于等于 m，那么这个 x 必然是可以的。
 
 代码如下：
 
@@ -49,16 +49,17 @@ public:
         sort(position.begin(),position.end());
         int down = 1;
         int up = (position.back() - position[0])/(m-1);
-
+		int ans = 0;
         while(down <= up){
             int mid = down + (up-down)/2;
             if(check(position,mid,m)){
+                ans = mid;
                 down = mid+1;
             }else{
                 up = mid-1;
             }
         }
-        return up;
+        return ans;
     }
 };
 ```

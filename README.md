@@ -31,3 +31,4 @@ School of Data and Computer Science, Sun Yat-sen University, Guangzhou, Sept. 20
 <!-- slide -->
 
 ## 开启博客之旅吧！
+当然，也可以直接在该程库的_post目录下直接查看博客。

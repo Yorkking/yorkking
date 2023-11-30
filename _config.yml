@@ -689,15 +689,13 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
               async="async"
               src="https://cdn.jsdelivr.net/combine/npm/reveal.js@5.0.2/dist/reveal.min.js,npm/reveal.js@5.0.2/plugin/markdown/markdown.min.js,npm/reveal.js@5.0.2/plugin/math/math.min.js"
               onload="
-              src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.2/dist/reveal.min.js"
-              src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.2/plugin/scroll/scroll.min.js"
               for(let x of document.getElementsByClassName('wrap'))
                 x.classList.add('reveal');
               Reveal.initialize({
                 height: '100%',
                 mouseWheel: true,
                 navigationMode: 'linear',
-                plugins: [ RevealScroll,RevealMarkdown,RevealMath.KaTeX ]
+                plugins: [ RevealMarkdown,RevealMath.KaTeX ]
               });
             "></script>
 

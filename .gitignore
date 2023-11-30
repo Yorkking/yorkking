@@ -19,7 +19,7 @@ _site
 # OS or Editor folders
 .vscode
 .DS_Store
-#._*
+._*
 Thumbs.db
 .cache
 .project
@@ -40,5 +40,7 @@ validation-status.json
 validation-report.json
 
 # Folders to ignore
+.bundle
+vendor
 node_modules
 bower_components

@@ -2,7 +2,7 @@
 
 Welcome to my home page!
 
-## My Contacts
+## Contacts
 
 - Address: **Sun Yat-sen University - 132 Waihuan East Rd. - Guangzhou, China**
 - Site: **[https://yorkking.github.io](https://yorkking.github.io)**
@@ -29,4 +29,4 @@ Welcome to my home page!
 ## Publications
 
 - [SYsU-lang：步步为营，构建编译实践全局观](https://github.com/arcsysu/SYsU-lang-paper)(计算机教育2022)-2th
-- FlagLoc: Localization Using a Flag for Mobile Wireless Sensor Networks with Measurement Errors (SECON'20, CCFB)-4th
+- FlagLoc: Localization Using a Flag for Mobile Wireless Sensor Networks with Measurement Errors (SECON'20, CCF-B)-4th

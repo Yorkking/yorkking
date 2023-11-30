@@ -1,25 +1,15 @@
-title: wu-kan # 站点标题
+title: yorkking # 站点标题
 description: | # 头像背后的信息（html格式），<br/>代表换行
-  SYSU第6年<br/>
-  水野爱<br/>
-  田宫例四驱车<br/>
+  SYSU第7年<br/>
+  魔法少女小圆<br/>
+  进击的巨人<br/>
   <a href="mailto:i@wu-kan.cn">
     <i class="fa-solid fa-envelope"></i>
   </a>
-  <a href="https://github.com/wu-kan">
+  <a href="https://github.com/yorkking">
     <i class="fa-brands fa-github"></i>
   </a>
   
-  
-  <iframe
-    src="//music.163.com/outchain/player?type=2&id=731250&auto=0&height=32"
-    width=100%
-    height=52
-    frameborder="no"
-    border="0"
-    marginwidth="0"
-    marginheight="0"
-  ></iframe>
 url: https://yorkking.github.io
 baseurl: "" # 假如你的博客是建在某个目录下的，请在这里加上目录名，并且下面配置的所有链接里的`/assets`前也要加，即`/your_baseurl/assets`。这一项结尾不要有'/'。
 
@@ -699,13 +689,15 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
               async="async"
               src="https://cdn.jsdelivr.net/combine/npm/reveal.js@5.0.2/dist/reveal.min.js,npm/reveal.js@5.0.2/plugin/markdown/markdown.min.js,npm/reveal.js@5.0.2/plugin/math/math.min.js"
               onload="
+              src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.2/dist/reveal.min.js"
+              src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.2/plugin/scroll/scroll.min.js"
               for(let x of document.getElementsByClassName('wrap'))
                 x.classList.add('reveal');
               Reveal.initialize({
                 height: '100%',
                 mouseWheel: true,
                 navigationMode: 'linear',
-                plugins: [ RevealMarkdown,RevealMath.KaTeX ]
+                plugins: [ RevealScroll,RevealMarkdown,RevealMath.KaTeX ]
               });
             "></script>
 
